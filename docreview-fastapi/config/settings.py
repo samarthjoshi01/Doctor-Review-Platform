@@ -8,6 +8,9 @@ class Settings(BaseSettings):
     mongo_uri: str
     mongo_db_name: str = "docreview_db"
 
+    # Dev convenience
+    skip_db: bool = False
+
     # JWT
     jwt_secret: str
     jwt_algorithm: str = "HS256"

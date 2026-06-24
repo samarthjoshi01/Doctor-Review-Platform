@@ -39,6 +39,11 @@ async def lifespan(app: FastAPI):
     print(f"🚀  FastAPI  →  http://{settings.app_host}:{settings.app_port}")
     print(f"📡  Swagger  →  http://localhost:{settings.app_port}/docs")
     print()
+    if settings.skip_db:
+        logger.warning("⚠️  SKIP_DB enabled — starting without MongoDB")
+        yield
+        return
+
     await connect_db()
     yield
     await close_db()
